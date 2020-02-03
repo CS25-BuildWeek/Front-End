@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import AppRouter from "./AppRouter";
+import Routes from "./utils/Routes";
 
 function App() {
   return (
     <div>
-      <AppRouter />
+      <h1> Home </h1>
+      <Routes />
     </div>
   );
 }
