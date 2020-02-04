@@ -69,7 +69,7 @@ function Login(props) {
         </div>
       </div>
       <img
-        src="https://i.imgur.com/5GD68l6.png"
+        src="https://i.imgur.com/JqKzn9p.jpg"
         alt="Gameboy"
         className="loginImage"
       />
