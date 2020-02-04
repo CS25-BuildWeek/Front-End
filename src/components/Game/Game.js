@@ -3,6 +3,80 @@ import axios from "axios";
 
 export const Game = ({ history }) => {
   const [initData, setInitData] = useState();
+  const [room, setRoom] = useState();
+
+  console.log(room, "ROOM");
+  console.log(initData, "InitData");
+
+  const moveUp = () => {
+    axios
+      .post(
+        "http://127.0.0.1:8000/api/adv/move/",
+        { direction: "n" },
+        {
+          headers: { Authorization: `Token ${history.location.state.token}` }
+        }
+      )
+      .then(res => {
+        setRoom(res.data);
+      })
+      .catch(err => console.log(err));
+
+    if (room) {
+      setInitData(room);
+    }
+  };
+  const moveDown = () => {
+    axios
+      .post(
+        "http://127.0.0.1:8000/api/adv/move/",
+        { direction: "s" },
+        {
+          headers: { Authorization: `Token ${history.location.state.token}` }
+        }
+      )
+      .then(res => {
+        setRoom(res.data);
+      })
+      .catch(err => console.log(err));
+    if (room) {
+      setInitData(room);
+    }
+  };
+  const moveRight = () => {
+    axios
+      .post(
+        "http://127.0.0.1:8000/api/adv/move/",
+        { direction: "e" },
+        {
+          headers: { Authorization: `Token ${history.location.state.token}` }
+        }
+      )
+      .then(res => {
+        setRoom(res.data);
+      })
+      .catch(err => console.log(err));
+    if (room) {
+      setInitData(room);
+    }
+  };
+  const moveLeft = () => {
+    axios
+      .post(
+        "http://127.0.0.1:8000/api/adv/move/",
+        { direction: "w" },
+        {
+          headers: { Authorization: `Token ${history.location.state.token}` }
+        }
+      )
+      .then(res => {
+        setRoom(res);
+      })
+      .catch(err => console.log(err));
+    if (room) {
+      setInitData(room);
+    }
+  };
 
   useEffect(() => {
     console.log("TOKEN", history.location.state.token);
@@ -20,10 +94,34 @@ export const Game = ({ history }) => {
     <div>
       <h1>Game</h1>
       {initData ? (
-        <div>
-          <h1>Room: {initData.title}</h1>
-          <h1>Description: {initData.description}</h1>
-        </div>
+        <>
+          <div className="room">
+            <h1>Room: {initData.title}</h1>
+            <h1>Description: {initData.description}</h1>
+          </div>
+          <div className="controls">
+            <img
+              src="https://i.imgur.com/e2IDQlk.png"
+              alt="Up Arrow"
+              onClick={moveUp}
+            />
+            <img
+              src="https://i.imgur.com/BBBFpk2.png"
+              alt="Down Arrow"
+              onClick={moveDown}
+            />
+            <img
+              src="https://i.imgur.com/FJPb38s.png"
+              alt="Left Arrow"
+              onClick={moveLeft}
+            />
+            <img
+              src="https://i.imgur.com/v5GFmXf.png"
+              alt="Right Arrow"
+              onClick={moveRight}
+            />
+          </div>
+        </>
       ) : null}
     </div>
   );
