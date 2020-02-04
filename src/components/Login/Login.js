@@ -48,7 +48,7 @@ function Login(props) {
             />
           </p>
           <p className="loginInputs">
-            <label style={{ fontWeight: "bold" }}>Email</label>
+            <label style={{ fontWeight: "bold" }}>Password</label>
             <input
               type="password"
               id="password"
