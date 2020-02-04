@@ -16,12 +16,12 @@ function Login(props) {
   function submitHandler(event) {
     event.preventDefault();
     axios
-      .post(`https://lambda-mud-test.herokuapp.com/api/login/`, user)
+      .post(`http://127.0.0.1:8000/api/login/`, user)
       .then(res => {
         if (res.status === 200 && res.data) {
           const token = res.data.key;
           localStorage.setItem("token", `Token ${token}`);
-          props.history.push("/game");
+          props.history.push({ pathname: "/game", state: { token: token } });
         }
       })
       .catch(err => {

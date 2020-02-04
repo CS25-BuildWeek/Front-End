@@ -12,7 +12,7 @@ const Register = props => {
 
   const registerUser = newUser => {
     axios
-      .post(`https://lambda-mud-test.herokuapp.com/api/registration/`, newUser)
+      .post(`http://127.0.0.1:8000/api/registration/`, newUser)
       .then(res => {
         const token = res.data.key;
         localStorage.setItem("token", `Token ${token}`);
