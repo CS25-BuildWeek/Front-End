@@ -12,6 +12,7 @@ const Register = props => {
   });
 
   const registerUser = newUser => {
+    console.log(newUser);
     axios
       .post(`https://cs-mud.herokuapp.com/api/registration/`, newUser)
       .then(res => {
