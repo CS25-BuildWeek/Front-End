@@ -1,0 +1,106 @@
+/* Login Styling */
+.login {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+}
+.loginForm {
+  background: #fffefa;
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginImage {
+  height: auto;
+  width: 60%;
+  clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.formTitle {
+  background: #fffefa;
+  padding: 1rem 1rem 1rem 1rem;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.loginForm input {
+  background: #efefef;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  padding: 0.3rem;
+  height: 3rem;
+  font-size: 1.4rem;
+}
+
+.loginInputs {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-bottom: 2rem;
+}
+
+.loginSubmit {
+  border-radius: 1.875rem;
+  border: none;
+  padding: 0.3125rem 0.625rem;
+  color: #fff;
+  width: 9.375rem;
+  height: 1.875rem;
+  margin-top: 0.6rem;
+  background: #e65400;
+}
+
+.loginSubmit:hover {
+  margin-top: 0.7rem;
+}
+
+.formContainer {
+  width: 40%;
+  margin: auto;
+  padding-bottom: 4rem;
+}
+
+label {
+  padding: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+.signinTextContainer {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.signupNav {
+  margin: 0 0 0 0.5rem;
+  color: #e65400;
+  text-decoration: underline;
+}
+.signinText {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+@media (max-width: 500px) {
+  .formContainer {
+    width: 90%;
+  }
+  .loginImage {
+    display: none;
+  }
+  .loginForm {
+    width: 90vw;
+    align-items: center;
+  }
+
+  .formTitle {
+    width: 90vw;
+  }
+
+  .loginForm input {
+    height: 3rem;
+  }
+  label {
+    font-size: 1rem;
+  }
+}

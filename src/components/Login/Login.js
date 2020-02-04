@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ButtonContainer } from "../styled-components/Button";
 import "./Login.css";
 
 function Login(props) {
@@ -29,37 +30,49 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <div>
-        <h1>MUD Adventure</h1>
-        <h2>Please Login</h2>
-      </div>
-      <div>
-        <form onSubmit={submitHandler}>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            required
-            placeholder="Username"
-            value={user.username}
-            onChange={inputHandler}
-          />
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            placeholder="Password"
-            value={user.password}
-            onChange={inputHandler}
-          />
-          <button onClick={submitHandler}>Login</button>
+    <div className="login">
+      <div className="formContainer">
+        <h1 className="formTitle">Welcome back!</h1>
+        <p className="signinText">Sign in with your username and password.</p>
+        <form onSubmit={submitHandler} className="loginForm">
+          <p className="loginInputs">
+            <label style={{ fontWeight: "bold" }}>Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required
+              placeholder="Login..."
+              value={user.username}
+              onChange={inputHandler}
+            />
+          </p>
+          <p className="loginInputs">
+            <label style={{ fontWeight: "bold" }}>Email</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Password..."
+              value={user.password}
+              onChange={inputHandler}
+            />
+          </p>
+          <ButtonContainer onClick={submitHandler}>Sign In</ButtonContainer>
         </form>
-        <div>
-          or Signup <Link to="/register">Here</Link>
+        <div className="signinTextContainer">
+          <p className=" signinTextForMobile">Don't have an account?</p>
+          <Link to="/register">
+            <p className="signupNav">Sign up</p>
+          </Link>
         </div>
       </div>
+      <img
+        src="https://i.imgur.com/5GD68l6.png"
+        alt="Gameboy"
+        className="loginImage"
+      />
     </div>
   );
 }
