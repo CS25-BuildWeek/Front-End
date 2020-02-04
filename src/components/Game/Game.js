@@ -11,7 +11,7 @@ export const Game = ({ history }) => {
   const moveUp = () => {
     axios
       .post(
-        "http://127.0.0.1:8000/api/adv/move/",
+        "https://cs-mud.herokuapp.com/api/adv/move/",
         { direction: "n" },
         {
           headers: { Authorization: `Token ${history.location.state.token}` }
@@ -29,7 +29,7 @@ export const Game = ({ history }) => {
   const moveDown = () => {
     axios
       .post(
-        "http://127.0.0.1:8000/api/adv/move/",
+        "https://cs-mud.herokuapp.com/api/adv/move/",
         { direction: "s" },
         {
           headers: { Authorization: `Token ${history.location.state.token}` }
@@ -46,7 +46,7 @@ export const Game = ({ history }) => {
   const moveRight = () => {
     axios
       .post(
-        "http://127.0.0.1:8000/api/adv/move/",
+        "https://cs-mud.herokuapp.com/api/adv/move/",
         { direction: "e" },
         {
           headers: { Authorization: `Token ${history.location.state.token}` }
@@ -63,7 +63,7 @@ export const Game = ({ history }) => {
   const moveLeft = () => {
     axios
       .post(
-        "http://127.0.0.1:8000/api/adv/move/",
+        "https://cs-mud.herokuapp.com/api/adv/move/",
         { direction: "w" },
         {
           headers: { Authorization: `Token ${history.location.state.token}` }
@@ -81,7 +81,7 @@ export const Game = ({ history }) => {
   useEffect(() => {
     console.log("TOKEN", history.location.state.token);
     axios
-      .get("http://127.0.0.1:8000/api/adv/init/", {
+      .get("https://cs-mud.herokuapp.com/api/adv/init/", {
         headers: { Authorization: `Token ${history.location.state.token}` }
       })
       .then(res => {
