@@ -8,7 +8,7 @@ function Login(props) {
   const [user, setUser] = useState({ username: "", password: "" });
 
   function inputHandler(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     const updatedUser = { ...user, [event.target.name]: event.target.value };
     setUser(updatedUser);
   }
