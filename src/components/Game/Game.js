@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Game.css";
+import img from "./Game-Pics/GameBoy.png";
 import { Player } from "./Player";
 import { Map } from "./Map";
 import { World } from "./World";
@@ -17,7 +19,7 @@ export const Game = ({ history }) => {
   console.log(initData, "InitData");
 
   const movement = e => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(e.keyCode, "EVENT");
     switch (e.keyCode) {
       case 37:
@@ -126,19 +128,32 @@ export const Game = ({ history }) => {
     //   })
     //   .catch(err => console.log(err));
   }, [history.location.state.token]);
-  console.log(initData);
+  // console.log(initData);
   return (
-    <div>
-      <h1>Game</h1>
-      <World />
-      {initData ? (
-        <>
-          <div className="room">
-            <h1>Room: {initData.title}</h1>
-            <h1>Description: {initData.description}</h1>
-          </div>
-        </>
-      ) : null}
+    <div className="gamePage">
+      <div>
+        <img
+          className="console"
+          height="950px"
+          width="800px"
+          src={img}
+          alt="Game-boy-img"
+        />
+        <World />
+      </div>
+      <div className="handbook">
+        <h1>Adventure Game: Handbook</h1>
+        <h3>Movement: Arrow Keys</h3>
+
+        {initData ? (
+          <>
+            <div className="room">
+              <p>Room: {initData.title}</p>
+              <p>Description: {initData.description}</p>
+            </div>
+          </>
+        ) : null}
+      </div>
     </div>
   );
 };

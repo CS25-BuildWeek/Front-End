@@ -1,5 +1,5 @@
 import React from "react";
-import walkSprite from "./walkSprite.png";
+import walkSprite from "./Game-Pics/walkSprite.png";
 import handleMovement from "./Movement";
 import { useSelector, useDispatch } from "react-redux";
 

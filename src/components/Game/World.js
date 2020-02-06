@@ -9,9 +9,11 @@ export const World = () => {
   return (
     <div
       style={{
-        position: "relative",
-        width: "800px",
-        height: "400px",
+        position: "absolute",
+        width: "410px",
+        left: "150px",
+        top: "100px",
+        height: "335px",
         margin: "20px auto"
       }}
     >
