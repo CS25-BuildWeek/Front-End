@@ -28,7 +28,9 @@ function Login(props) {
         <p className="signinText">Sign in with your username and password.</p>
         <form onSubmit={submitHandler} className="loginForm">
           <p className="loginInputs">
-            <label style={{ fontWeight: "bold" }}>Username</label>
+            <label style={{ fontWeight: "bold", color: "black" }}>
+              Username
+            </label>
             <input
               type="text"
               id="username"
@@ -40,7 +42,9 @@ function Login(props) {
             />
           </p>
           <p className="loginInputs">
-            <label style={{ fontWeight: "bold" }}>Password</label>
+            <label style={{ fontWeight: "bold", color: "black" }}>
+              Password
+            </label>
             <input
               type="password"
               id="password"
@@ -54,9 +58,9 @@ function Login(props) {
           <ButtonContainer onClick={submitHandler}>Sign In</ButtonContainer>
         </form>
         <div className="signinTextContainer">
-          <p className=" signinTextForMobile">Don't have an account?</p>
-          <Link to="/register">
-            <p className="signupNav">Sign up</p>
+          {/* <p className="signinTextForMobile">Don't have an account?</p> */}
+          <Link to="/register" className="signupNav">
+            Don't have an account? Sign up
           </Link>
         </div>
       </div>
