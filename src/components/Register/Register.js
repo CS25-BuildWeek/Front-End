@@ -53,8 +53,8 @@ function Register({ touched, errors }) {
         </Form>
         <div className="loginTextContainer">
           <p style={{ color: "#fffefa" }}>Already have an account?</p>
-          <Link to="/">
-            <p className="login-nav">Login</p>
+          <Link to="/" className="login-nav">
+            Login
           </Link>
         </div>
       </div>

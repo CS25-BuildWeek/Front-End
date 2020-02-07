@@ -20,6 +20,7 @@
 
 .formTitle {
   background: #fffefa;
+  color: black;
   padding: 1rem 1rem 1rem 1rem;
   text-align: center;
   font-size: 3rem;
@@ -56,9 +57,15 @@
   margin-top: 0.7rem;
 }
 
+.signinTextForMobile {
+  color: black;
+}
+
 .formContainer {
   width: 40%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 4rem;
 }
 
@@ -67,7 +74,7 @@ label {
   font-size: 1rem;
 }
 .signinTextContainer {
-  margin: 1rem 0;
+  margin: 3rem auto;
   display: flex;
   justify-content: center;
   font-size: 1.2rem;
@@ -76,8 +83,10 @@ label {
   margin: 0 0 0 0.5rem;
   color: #e65400;
   text-decoration: underline;
+  font-size: 1.8rem;
 }
 .signinText {
+  color: black;
   text-align: center;
   padding-bottom: 1rem;
 }
