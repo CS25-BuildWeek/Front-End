@@ -1,24 +1,27 @@
 import axios from "axios";
 
-export const CHANGE_LOCATION = "CHANGE_LOCATION";
+export {
+  REGISTER_USER_START,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAIL,
+  LOGIN_USER_START,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_FAIL,
+  registerUser,
+  loginUser
+} from "./authActions";
 
-export const changeLocation = props => dispatch => {
-  console.log(props, "PROPS");
-  axios
-    .post(
-      "https://cs-mud.herokuapp.com/api/adv/move/",
-      { direction: "w" },
-      {
-        headers: {
-          Authorization: `Token ${history.location.state.token}`
-        }
-      }
-    )
-    .then(res => {
-      setRoom(res);
-    })
-    .catch(err => console.log(err));
-  if (room) {
-    dispatch();
-  }
-};
+export {
+  INITIALIZE_START,
+  INITIALIZE_SUCCESS,
+  INITIALIZE_FAIL,
+  ROOMS_START,
+  ROOMS_SUCCESS,
+  ROOMS_FAIL,
+  MOVE_START,
+  MOVE_SUCCESS,
+  MOVE_FAIL,
+  initialize,
+  getRooms,
+  move
+} from "./gameActions";

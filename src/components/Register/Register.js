@@ -84,7 +84,7 @@ export default withFormik({
   }),
 
   handleSubmit(values, formikBag) {
-    const url = "https://cs-mud.herokuapp.com/api/registration/";
+    const url = "https://cs-bw-mud.herokuapp.com/api/registration/";
 
     // console.log(values, formikBag);
     axios

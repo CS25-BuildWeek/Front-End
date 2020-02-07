@@ -3,9 +3,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { ButtonContainer } from "../styled-components/Button";
 import "./Login.css";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../config/actions";
 
 function Login(props) {
   const [user, setUser] = useState({ username: "", password: "" });
+  const dispatch = useDispatch();
 
   function inputHandler(event) {
     // console.log(event.target.value);
@@ -15,18 +18,7 @@ function Login(props) {
 
   function submitHandler(event) {
     event.preventDefault();
-    axios
-      .post(`https://cs-mud.herokuapp.com/api/login/`, user)
-      .then(res => {
-        if (res.status === 200 && res.data) {
-          const token = res.data.key;
-          localStorage.setItem("token", `Token ${token}`);
-          props.history.push({ pathname: "/game", state: { token: token } });
-        }
-      })
-      .catch(err => {
-        if (err) console.error(err);
-      });
+    dispatch(loginUser(user, props.history));
   }
 
   return (

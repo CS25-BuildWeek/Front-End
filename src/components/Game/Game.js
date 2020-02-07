@@ -2,102 +2,32 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Game.css";
 import img from "./Game-Pics/GameBoy.png";
-import { Player } from "./Player";
-import { Map } from "./Map";
 import { World } from "./World";
 import { useSelector, useDispatch } from "react-redux";
+import { initialize, getRooms, move } from "../config/actions";
 
 export const Game = ({ history }) => {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
-  const [initData, setInitData] = useState();
-  const [room, setRoom] = useState();
-  const [map, setMap] = useState();
-
-  console.log(room, "ROOM");
-  console.log(map, "MAP");
-  console.log(initData, "InitData");
+  console.log("REDUX STATE", state);
+  console.log("CURRENT ROOM", state.player.currentRoom);
+  console.log("CURRENT ROOM TITLE", state.player.currentRoom.title);
 
   const movement = e => {
     // e.preventDefault();
     console.log(e.keyCode, "EVENT");
     switch (e.keyCode) {
       case 37:
-        axios
-          .post(
-            "https://cs-mud.herokuapp.com/api/adv/move/",
-            { direction: "w" },
-            {
-              headers: {
-                Authorization: `Token ${history.location.state.token}`
-              }
-            }
-          )
-          .then(res => {
-            setRoom(res);
-          })
-          .catch(err => console.log(err));
-        if (room) {
-          setInitData(room);
-        }
+        dispatch(move("w"));
         break;
       case 38:
-        axios
-          .post(
-            "https://cs-mud.herokuapp.com/api/adv/move/",
-            { direction: "n" },
-            {
-              headers: {
-                Authorization: `Token ${history.location.state.token}`
-              }
-            }
-          )
-          .then(res => {
-            setRoom(res.data);
-          })
-          .catch(err => console.log(err));
-
-        if (room) {
-          setInitData(room);
-        }
+        dispatch(move("n"));
         break;
       case 39:
-        axios
-          .post(
-            "https://cs-mud.herokuapp.com/api/adv/move/",
-            { direction: "e" },
-            {
-              headers: {
-                Authorization: `Token ${history.location.state.token}`
-              }
-            }
-          )
-          .then(res => {
-            setRoom(res.data);
-          })
-          .catch(err => console.log(err));
-        if (room) {
-          setInitData(room);
-        }
+        dispatch(move("e"));
         break;
       case 40:
-        axios
-          .post(
-            "https://cs-mud.herokuapp.com/api/adv/move/",
-            { direction: "s" },
-            {
-              headers: {
-                Authorization: `Token ${history.location.state.token}`
-              }
-            }
-          )
-          .then(res => {
-            setRoom(res.data);
-          })
-          .catch(err => console.log(err));
-        if (room) {
-          setInitData(room);
-        }
+        dispatch(move("s"));
         break;
       default:
         console.log(e.keyCode);
@@ -105,30 +35,14 @@ export const Game = ({ history }) => {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    dispatch(initialize());
+    dispatch(getRooms());
     window.addEventListener("keydown", e => {
       movement(e);
     });
-    console.log("TOKEN", history.location.state.token);
-    axios
-      .get("https://cs-mud.herokuapp.com/api/adv/init/", {
-        headers: { Authorization: `Token ${history.location.state.token}` }
-      })
-      .then(res => {
-        setInitData(res.data);
-      })
-      .catch(err => console.log(err));
-
-    // axios
-    //   .get("https://cs-mud.herokuapp.com/api/adv/rooms/", {
-    //     headers: { Authorization: `Token ${history.location.state.token}` }
-    //   })
-    //   .then(res => {
-    //     console.log(res, "Map Response");
-    //     setMap(res.data);
-    //   })
-    //   .catch(err => console.log(err));
-  }, [history.location.state.token]);
-  // console.log(initData);
+  }, []);
   return (
     <div className="gamePage">
       <div>
@@ -145,11 +59,11 @@ export const Game = ({ history }) => {
         <h1>Adventure Game: Handbook</h1>
         <h3>Movement: Arrow Keys</h3>
 
-        {initData ? (
+        {state.player.currentRoom ? (
           <>
             <div className="room">
-              <p>Room: {initData.title}</p>
-              <p>Description: {initData.description}</p>
+              <p>Room: {state.player.currentRoom.title}</p>
+              <p>Description: {state.player.currentRoom.description}</p>
             </div>
           </>
         ) : null}
